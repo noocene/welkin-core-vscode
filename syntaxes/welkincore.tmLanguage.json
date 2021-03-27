@@ -1,0 +1,102 @@
+{
+	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+	"name": "welkin-core",
+	"patterns": [
+		{
+			"include": "#indices"
+		},
+		{
+			"include": "#duplications"
+		},
+		{
+			"include": "#comments"
+		},
+		{
+			"include": "#declarations"
+		},
+		{
+			"include": "#functions"
+		},
+		{
+			"include": "#keywords"
+		},
+		{
+			"include": "#lambdas"
+		}
+	],
+	"repository": {
+		"indices": {
+			"patterns": [
+				{
+					"name": "variable.other",
+					"match": "\\^[0-9]*"
+				}
+			]
+		},
+		"comments": {
+			"patterns": [
+				{
+					"name": "comment.line",
+					"match": "^-.*$"
+				}
+			]
+		},
+		"declarations": {
+			"patterns": [
+				{
+					"match": "^([A-z]+)\\s*(:)\\s*",
+					"captures": {
+						"1": {
+							"name": "entity.name"
+						}
+					}
+				}
+			]
+		},
+		"keywords": {
+			"patterns": [
+				{
+					"name": "keyword",
+					"match": "(\\*|!|\\.)"
+				}
+			]
+		},
+		"functions": {
+			"match": "(_|\\+)\\s*([A-z]*)\\s*,\\s*([A-z]*)\\s*",
+			"captures": {
+				"1": {
+					"name": "keyword.other"
+				},
+				"2": {
+					"name": "entity.name"
+				},
+				"3": {
+					"name": "entity.name"
+				}
+			}
+		},
+		"lambdas": {
+			"match": "(\\\\|\\/)\\s*([A-z]*)",
+			"captures": {
+				"1": {
+					"name": "keyword.other"
+				},
+				"2": {
+					"name": "entity.name"
+				}
+			}
+		},
+		"duplications": {
+			"match": "(:)\\s*([A-z]*)\\s*(=)\\s*",
+			"captures": {
+				"1": {
+					"name": "keyword.other"
+				},
+				"2": {
+					"name": "entity.name"
+				}
+			}
+		}
+	},
+	"scopeName": "source.welkincore"
+}
